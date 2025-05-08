@@ -73,7 +73,8 @@ def set_search_space(trial):
     args.tbwd = trial.suggest_float("tbwd", 1e-6, 1e-4)
     args.tpwd = trial.suggest_float("tpwd", 1e-6, 1e-4)
     args.lw = trial.suggest_float("lw", 0.01, 0.7)
-    args.layer_num = trial.suggest_categorical("layer_num", [64, 96, 132, 164, 196, 256])
+    args.a = trial.suggest_float("a", -0.9, 0.9)
+    args.layer_num = trial.suggest_categorical("layer_num", [8, 16, 32, 64, 96, 132, 164, 196, 256])
 
     args.dr = trial.suggest_float("dropout", 0.1, 0.8)
     res = mutil_stage_train(args, trial)
